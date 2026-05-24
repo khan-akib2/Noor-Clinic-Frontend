@@ -86,6 +86,7 @@ export async function POST(req) {
     }
 
     // Use Brevo HTTP API directly (avoids SDK compatibility issues)
+    // 1. Send notification email to the Doctor
     const brevoRes = await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
       headers: {
@@ -103,11 +104,61 @@ export async function POST(req) {
 
     if (!brevoRes.ok) {
       const errData = await brevoRes.json();
-      console.error("Brevo API error:", errData);
+      console.error("Brevo API error (Doctor alert):", errData);
       return NextResponse.json(
-        { error: "Failed to send email. Please call us directly." },
+        { error: "Failed to process appointment. Please call us directly." },
         { status: 500 }
       );
+    }
+
+    // 2. Send automatic confirmation receipt email to the Patient
+    const patientHtmlContent = `
+      <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #f8fafc; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0;">
+        <div style="background: linear-gradient(135deg, #0A2540, #1A3A5C); padding: 32px; text-align: center;">
+          <h1 style="color: #ffffff; margin: 0; font-size: 24px;">🏥 Booking Request Received</h1>
+          <p style="color: #5EEAD4; margin: 8px 0 0; font-size: 14px;">Noor Clinic — Dr. Fazal</p>
+        </div>
+        <div style="padding: 32px; color: #334155; line-height: 1.6;">
+          <h2 style="color: #0F172A; margin-top: 0; font-size: 20px;">Dear ${fullName},</h2>
+          <p>Thank you for choosing Noor Clinic. We have successfully received your appointment request for the following slot:</p>
+          
+          <div style="background: #f1f5f9; padding: 20px; border-radius: 12px; margin: 24px 0; border-left: 4px solid #0d9488;">
+            <p style="margin: 0 0 8px 0; font-size: 14px; color: #475569;"><strong>📅 Date:</strong> ${date}</p>
+            <p style="margin: 0 0 8px 0; font-size: 14px; color: #475569;"><strong>⏰ Preferred Time:</strong> ${timeSlot}</p>
+            <p style="margin: 0; font-size: 14px; color: #475569;"><strong>🩺 Physician:</strong> Dr. Fazal</p>
+          </div>
+          
+          <p style="font-weight: 600; color: #0F172A; margin-top: 24px;">What happens next?</p>
+          <p style="margin-top: 8px;">Our clinic coordination team will review your request and contact you at your phone number <strong>${phone}</strong> within 2 hours during clinic hours to confirm your reservation and provide any pre-consultation instructions.</p>
+          
+          <p style="margin-top: 32px; border-t: 1px solid #e2e8f0; padding-top: 24px; font-size: 13px; color: #64748b;">
+            Need to reschedule or have questions? Call us directly at <a href="tel:+917709498002" style="color: #0d9488; text-decoration: none; font-weight: 600;">+91 7709 498 002</a>.
+          </p>
+        </div>
+        <div style="background: #f1f5f9; padding: 20px 32px; text-align: center; border-top: 1px solid #e2e8f0;">
+          <p style="color: #94a3b8; font-size: 12px; margin: 0;">Noor Clinic, Khan Compound, Shilphata, Thane, Maharashtra 400612</p>
+        </div>
+      </div>
+    `;
+
+    try {
+      await fetch("https://api.brevo.com/v3/smtp/email", {
+        method: "POST",
+        headers: {
+          "accept": "application/json",
+          "api-key": apiKey,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          sender: { name: "Noor Clinic", email: senderEmail },
+          to: [{ email: email, name: fullName }],
+          subject: "We've received your appointment request - Noor Clinic",
+          htmlContent: patientHtmlContent,
+        }),
+      });
+    } catch (patientEmailErr) {
+      // Log error but don't fail the entire response, as the doctor alert was already sent successfully!
+      console.error("Failed to send patient confirmation email:", patientEmailErr);
     }
 
     return NextResponse.json({

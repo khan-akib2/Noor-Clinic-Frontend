@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
-  Stethoscope,
   Phone,
   Mail,
   MapPin,
@@ -32,8 +32,12 @@ export default function Footer() {
           {/* Column 1: Clinic Info */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2.5 mb-5 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-secondary to-accent flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <Stethoscope className="w-5 h-5 text-white" />
+              <div className="w-10 h-10 rounded-full overflow-hidden bg-transparent border border-gray-100/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <img
+                  src="/logo-clinic.png"
+                  alt="Noor Clinic Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div>
                 <span className="text-lg font-bold font-heading tracking-tight">NOOR</span>

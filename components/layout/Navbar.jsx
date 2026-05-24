@@ -2,9 +2,10 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, Calendar, Stethoscope } from "lucide-react";
+import { Menu, X, Phone, Calendar } from "lucide-react";
 import { NAV_LINKS, CLINIC_INFO } from "@/lib/constants";
 
 export default function Navbar() {
@@ -47,12 +48,16 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-14">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2.5 group" aria-label="Noor Clinic Home">
-              <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 ${
+              <div className={`w-10 h-10 rounded-full overflow-hidden flex items-center justify-center transition-all duration-300 group-hover:scale-110 ${
                 isScrolled
-                  ? "bg-gradient-to-br from-secondary to-accent shadow-md"
-                  : "bg-white/20 backdrop-blur-sm border border-white/30"
+                  ? "bg-white shadow-md border border-gray-100"
+                  : "bg-transparent shadow-sm border border-white/20"
               }`}>
-                <Stethoscope className={`w-5 h-5 ${isScrolled ? "text-white" : "text-white"}`} />
+                <img
+                  src="/logo-clinic.png"
+                  alt="Noor Clinic Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div>
                 <span className={`text-lg font-bold font-heading tracking-tight transition-colors duration-300 ${
@@ -163,8 +168,12 @@ export default function Navbar() {
                 {/* Mobile Header */}
                 <div className="flex items-center justify-between mb-8">
                   <div className="flex items-center gap-2">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-secondary to-accent flex items-center justify-center">
-                      <Stethoscope className="w-5 h-5 text-white" />
+                    <div className="w-10 h-10 rounded-full overflow-hidden bg-transparent border border-gray-200 flex items-center justify-center">
+                      <img
+                        src="/logo-clinic.png"
+                        alt="Noor Clinic Logo"
+                        className="w-full h-full object-contain"
+                      />
                     </div>
                     <div>
                       <span className="text-lg font-bold text-primary font-heading">NOOR</span>

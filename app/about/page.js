@@ -11,6 +11,7 @@ import {
   Award,
   Clock,
 } from "lucide-react";
+import Image from "next/image";
 import PageHero from "@/components/sections/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { CLINIC_INFO, QUALIFICATIONS } from "@/lib/constants";
@@ -39,8 +40,14 @@ export default function AboutPage() {
               <div className="relative bg-gradient-to-br from-primary to-primary-light rounded-3xl p-8 lg:p-12 overflow-hidden">
                 <div className="absolute inset-0 pattern-dots opacity-10" />
                 <div className="relative flex flex-col items-center text-center">
-                  <div className="w-48 h-48 rounded-full bg-gradient-to-br from-secondary/40 to-accent/40 flex items-center justify-center mb-6 border-4 border-white/20 shadow-2xl">
-                    <span className="text-6xl font-bold text-white font-heading">DF</span>
+                  <div className="w-48 h-48 rounded-full bg-white flex items-center justify-center mb-6 border-4 border-white/20 shadow-2xl overflow-hidden relative">
+                    <Image
+                      src="/doctor.png"
+                      alt={CLINIC_INFO.doctor}
+                      width={192}
+                      height={192}
+                      className="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-500"
+                    />
                   </div>
                   <h3 className="text-2xl font-bold text-white font-heading mb-1">
                     {CLINIC_INFO.doctor}
