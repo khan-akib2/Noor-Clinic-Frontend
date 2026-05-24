@@ -40,13 +40,13 @@ export default function AboutPage() {
               <div className="relative bg-gradient-to-br from-primary to-primary-light rounded-3xl p-8 lg:p-12 overflow-hidden">
                 <div className="absolute inset-0 pattern-dots opacity-10" />
                 <div className="relative flex flex-col items-center text-center">
-                  <div className="w-48 h-48 rounded-full bg-white flex items-center justify-center mb-6 border-4 border-white/20 shadow-2xl overflow-hidden relative">
+                  <div className="w-52 h-64 rounded-2xl bg-white flex items-center justify-center mb-6 border-4 border-white/20 shadow-2xl overflow-hidden relative">
                     <Image
                       src="/doctor.png"
                       alt={CLINIC_INFO.doctor}
-                      width={192}
-                      height={192}
-                      className="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-500"
+                      width={208}
+                      height={256}
+                      className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <h3 className="text-2xl font-bold text-white font-heading mb-1">

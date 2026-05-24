@@ -149,13 +149,13 @@ export default function Hero() {
               <div className="relative w-80 h-[420px] rounded-3xl bg-gradient-to-b from-white/15 to-white/5 backdrop-blur-xl border border-white/20 overflow-hidden shadow-2xl">
                 {/* Doctor illustration area */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
-                  <div className="w-40 h-40 rounded-full bg-white flex items-center justify-center mb-6 border-4 border-white/20 overflow-hidden relative shadow-inner">
+                  <div className="w-44 h-56 rounded-2xl bg-white flex items-center justify-center mb-6 border-4 border-white/20 overflow-hidden relative shadow-lg">
                     <Image
                       src="/doctor.png"
                       alt={CLINIC_INFO.doctor}
-                      width={160}
-                      height={160}
-                      className="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-500"
+                      width={176}
+                      height={224}
+                      className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
                       priority
                     />
                   </div>
