@@ -45,12 +45,21 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "Noor Clinic",
+    images: [
+      {
+        url: "/logo-clinic.png",
+        width: 512,
+        height: 512,
+        alt: "Noor Clinic Logo",
+      },
+    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Noor Clinic — Your Health, Our Priority",
     description:
       "Compassionate healthcare with a personal touch. Book your appointment today.",
+    images: ["/logo-clinic.png"],
   },
   robots: {
     index: true,
