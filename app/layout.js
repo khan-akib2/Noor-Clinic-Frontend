@@ -18,6 +18,7 @@ const outfit = Outfit({
 });
 
 export const metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: {
     default: "Noor Clinic — Your Health, Our Priority",
     template: "%s | Noor Clinic",
