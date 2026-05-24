@@ -18,10 +18,28 @@ const outfit = Outfit({
 });
 
 const getSiteUrl = () => {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
-  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return "http://localhost:3000";
+  let url = (process.env.NEXT_PUBLIC_SITE_URL || "").trim();
+  
+  // Handle accidental comma-separated URL lists gracefully
+  if (url.includes(",")) {
+    url = url.split(",")[0].trim();
+  }
+  
+  if (!url) {
+    if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+      url = `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL.trim()}`;
+    } else if (process.env.VERCEL_URL) {
+      url = `https://${process.env.VERCEL_URL.trim()}`;
+    } else {
+      url = "http://localhost:3000";
+    }
+  }
+  
+  if (!url.startsWith("http://") && !url.startsWith("https://")) {
+    url = `https://${url}`;
+  }
+  
+  return url;
 };
 
 export const metadata = {
