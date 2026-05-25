@@ -160,8 +160,8 @@ export default function Hero() {
                     />
                   </div>
                   <h3 className="text-white text-xl font-bold font-heading mb-1">{CLINIC_INFO.doctor}</h3>
-                  <p className="text-secondary-light text-sm font-medium mb-1">MBBS, MD</p>
-                  <p className="text-white/50 text-sm">Family Physician</p>
+                  <p className="text-secondary-light text-sm font-medium mb-1">BUMS (MUHS Nashik)</p>
+                  <p className="text-white/50 text-sm">General Physician & Unani Consultant</p>
 
                   {/* Rating */}
                   <div className="flex items-center gap-2 mt-4 px-4 py-2 rounded-full bg-white/10 border border-white/10">

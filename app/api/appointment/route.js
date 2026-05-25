@@ -136,7 +136,7 @@ export async function POST(req) {
           </p>
         </div>
         <div style="background: #f1f5f9; padding: 20px 32px; text-align: center; border-top: 1px solid #e2e8f0;">
-          <p style="color: #94a3b8; font-size: 12px; margin: 0;">Noor Clinic, Khan Compound, Shilphata, Thane, Maharashtra 400612</p>
+          <p style="color: #94a3b8; font-size: 12px; margin: 0;">Shop No. 05, Khan Compound, near Hira Residency, Mumbra, Thane, Maharashtra 400612</p>
         </div>
       </div>
     `;

@@ -52,8 +52,8 @@ export default function AboutPage() {
                   <h3 className="text-2xl font-bold text-white font-heading mb-1">
                     {CLINIC_INFO.doctor}
                   </h3>
-                  <p className="text-secondary-light font-medium mb-2">MBBS, MD — General Medicine</p>
-                  <p className="text-white/60 text-sm mb-6">Family Physician & Healthcare Expert</p>
+                  <p className="text-secondary-light font-medium mb-2">BUMS (MUHS Nashik)</p>
+                  <p className="text-white/60 text-sm mb-6">General Physician & Unani Consultant</p>
 
                   {/* Quick stats */}
                   <div className="grid grid-cols-3 gap-4 w-full">
@@ -91,9 +91,9 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-4 text-text-muted leading-relaxed">
                 <p>
-                  Dr. Fazal is a highly experienced family physician with over 15 years of
-                  dedicated practice in comprehensive healthcare. He holds an MBBS and MD in General
-                  Medicine, with specialized expertise in diabetes management and preventive care.
+                  Dr. Fazal is a highly experienced General Physician and Unani Consultant with over 15 years of
+                  dedicated practice in comprehensive healthcare. He holds a BUMS degree from MUHS Nashik,
+                  with specialized expertise in holistic medicine, general healthcare, and preventive care.
                 </p>
                 <p>
                   At Noor Clinic, Dr. Fazal believes that every patient deserves personalized

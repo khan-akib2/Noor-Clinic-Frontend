@@ -12,7 +12,7 @@ import MapEmbed from "@/components/sections/MapEmbed";
 export const metadata = {
   title: "Noor Clinic — Your Health, Our Priority",
   description:
-    "Welcome to Noor Clinic. Compassionate, comprehensive healthcare led by Dr. Fazal. Book your appointment for general checkups, diabetes care, and more.",
+    "Welcome to Noor Clinic. Compassionate, comprehensive healthcare led by Dr. Fazal, a General Physician and Unani Consultant. Book your appointment today.",
 };
 
 export default function Home() {
