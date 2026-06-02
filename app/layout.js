@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import ToastProvider from "@/components/ui/Toast";
+import SmoothScrolling from "@/components/layout/SmoothScrolling";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -98,11 +99,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
       <body className="font-sans antialiased">
-        <ToastProvider />
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        <SmoothScrolling>
+          <ToastProvider />
+          <Navbar />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+          <WhatsAppButton />
+        </SmoothScrolling>
       </body>
     </html>
   );
